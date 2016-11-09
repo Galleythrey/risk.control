@@ -22,3 +22,4 @@ node {
 	stage('results') {
 		archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
 	} 
+}
