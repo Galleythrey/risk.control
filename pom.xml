@@ -138,7 +138,7 @@
                     </compilerArguments>
                 </configuration>
             </plugin>
-        </plugins>>
+        </plugins>
     </build>
     
 </project>
