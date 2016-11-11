@@ -227,6 +227,7 @@
                 </configuration>  
             </plugin> 
         </plugins>
+        <finalName>risk.control</finalName>
     </build>
     
 </project>
