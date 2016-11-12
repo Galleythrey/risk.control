@@ -48,8 +48,8 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="RegisterAction" class="riskcontrol.action.RegisterAction">
-	</bean>
+	<bean id="RegisterAction" class="riskcontrol.action.RegisterAction"></bean>
+	<bean id="IssueAction" class="riskcontrol.action.IssueAction"></bean>
 
 	<!-- 定义 Autowired 自动注入 bean -->
 	<bean
