@@ -15,8 +15,8 @@ public class Issue implements Serializable {
 	private String project;
 	private String content;
 	private String possibility;
-	private String seriousnes;
-	private String triger;
+	private String seriousness;
+	private String triggerY;
 	private String committer;
 	private String tracker;
 	
@@ -45,18 +45,6 @@ public class Issue implements Serializable {
 	public void setPossibility(String possibility) {
 		this.possibility = possibility;
 	}
-	public String getSeriousnes() {
-		return seriousnes;
-	}
-	public void setSeriousnes(String seriousnes) {
-		this.seriousnes = seriousnes;
-	}
-	public String getTriger() {
-		return triger;
-	}
-	public void setTriger(String triger) {
-		this.triger = triger;
-	}
 	public String getCommitter() {
 		return committer;
 	}
@@ -68,6 +56,18 @@ public class Issue implements Serializable {
 	}
 	public void setTracker(String tracker) {
 		this.tracker = tracker;
+	}
+	public String getSeriousness() {
+		return seriousness;
+	}
+	public void setSeriousness(String seriousness) {
+		this.seriousness = seriousness;
+	}
+	public String getTriggerY() {
+		return triggerY;
+	}
+	public void setTriggerY(String triggerY) {
+		this.triggerY = triggerY;
 	}
 	
 }

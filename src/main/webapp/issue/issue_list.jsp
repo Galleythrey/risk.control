@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>登录</title>
+    <title>风险列表</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<%=request.getContextPath()+"/css/bootstrap.min.css"%>" rel="stylesheet">
@@ -35,12 +35,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand">项目风险管理系统</a>
+          <a class="navbar-brand">项目风险管理系统</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<%=request.getContextPath()+"/user/login.jsp"%>">登录</a></li>
-            <li><a href="<%=request.getContextPath()+"/user/register.jsp"%>">注册</a></li>
+            <li><a href="#"><%=session.getAttribute("user")%></a></li>
+            <li><s:a href="logout.action">退出登录</s:a></li>
           </ul>
           
         </div>
@@ -50,21 +50,44 @@
     <div class="container-fluid">
       <div class="row">
 
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><s:a href="my.action"><span class="glyphicon glyphicon-dashboard"></span> 我的工作台</s:a></li>
+            <li><a href="<%=request.getContextPath()+"/user/home.jsp"%>" ><span class="glyphicon glyphicon-stats"></span> 风险概述</a></li>
+            <li class="active"><s:a href="all.action"><span class="glyphicon glyphicon-th-list"></span> 风险列表</s:a></li>
+            <li><a href="<%=request.getContextPath()+"/issue/addIssue.jsp"%>" ><span class="glyphicon glyphicon-pencil"></span> 新建风险</a></li>
+          </ul>
+        </div>
         
-        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 main">
-          <h2 class="sub-header">登录</h2>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-          <s:form role="form" action="login" method="post">
-            <div class="form-group">
-              <input type="text" class="form-control" id="exampleInputEmail1" name="username" placeholder="用户名">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="密码">
-            </div>
-            <button type="submit" class="btn btn-block btn-default submit-button">登录</button>
-          </s:form>
-
-          
+          <h2 class="sub-header">风险列表</h2>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>项目</th>
+                  <th>可能性</th>
+                  <th>影响程度</th>
+                  <th>阈值</th>
+                  <th>查看详情</th>
+                </tr>
+              </thead>
+              <tbody>
+              	<s:iterator id="issue" value="#request.allIssues">
+              	    <tr>
+              	      <td><s:property value="#issue.id"/></td>
+	                  <td><s:property value="#issue.project"/></td>
+	                  <td><s:property value="#issue.possibility"/></td>
+	                  <td><s:property value="#issue.seriousness"/></td>
+	                  <td><s:property value="#issue.triggerY"/></td>
+	                  <td><s:a href="detail.action?id=%{#issue.id}"><span class="glyphicon glyphicon-link"></span></s:a></td>
+	                </tr>
+			    </s:iterator>
+              </tbody>
+            </table>
+          </div>
 
         </div>
       </div>

@@ -1,0 +1,210 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  font-family: SimHei;
+}
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 20px;
+  /*border-bottom: 1px solid #eee;*/
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  /*border: 0;*/
+  border-color: #333;
+}
+
+.navbar {
+  background-color: #333;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #fff;
+}
+
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.sidebar {
+  background-color: #333;
+}
+
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 40px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.nav-sidebar > li > a span{
+  margin-right: 14px;
+}
+
+.nav-sidebar > li > a:hover,
+.nav-sidebar > li > a:focus {
+  color: #aaa;
+  background-color: #444;
+}
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #222;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+
+
+
+.section-title {
+  background-color: #eee;
+  padding-top: 6px;
+  padding-bottom: 6px; 
+  padding-left: 16px;
+  margin-bottom: 14px;
+  color: #222;
+  font-size: 16px;
+}
+
+.section-affection {
+  margin-top: 220px;
+}
+
+.section-commit {
+  margin-top: 260px;
+}
+
+.panel {
+  color: #fff;
+  border: 0;
+}
+
+.panel-pos-high {
+  background-color: #ffc107;
+}
+.panel-pos-middle {
+  background-color: #ffca28;
+}
+.panel-pos-low {
+  background-color: #ffd54f;
+}
+
+.panel-aff-high {
+  background-color: #7cb342;
+}
+.panel-aff-middle {
+  background-color: #8bc34a;
+}
+.panel-aff-low {
+  background-color: #9ccc65;
+}
+
+.panel-data {
+  text-align: right;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.panel-data span {
+  font-size: 34px;
+}
+.panel-description {
+  font-size: 18px;
+  display: inline;
+}
+.panel-chevron {
+  font-size: 16px;
+  float: right;
+}
+
+.submit-button {
+  color: #fff;
+  background-color: #7cb342;
+  border: 0;
+  font-size: 14px;
+}
+
+.submit-button:hover,
+.submit-button:active {
+  background-color: #9ccc65;
+  color: #fff;
+}

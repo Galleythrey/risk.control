@@ -10,4 +10,5 @@ public interface IssueDao {
 	public int newID();
 	public List<Issue> findAll();
 	public List<Issue> findTrack(String traker);
+	public List<Issue> findCommit(String commiter);
 }

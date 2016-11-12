@@ -113,10 +113,15 @@ public class BaseDaoImpl implements BaseDao {
 	}
 
 	public int getMax(Class c, String col) {
-		Session session = getNewSession();
-		String hql = "select max(" + col + ") from " + c.getName();
-		int max = (Integer) session.createQuery(hql).uniqueResult();
-		session.close();
+		int max;
+		try {
+			Session session = getNewSession();
+			String hql = "select max(" + col + ") from " + c.getName();
+			max = (Integer) session.createQuery(hql).uniqueResult();
+			session.close();
+		} catch (Exception e) {
+			return 1;
+		}
 		return max;
 	}
 }

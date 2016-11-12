@@ -44,4 +44,14 @@ public class IssueDaoImpl implements IssueDao{
 		return list;
 	}
 
+	@Override
+	public List<Issue> findCommit(String commiter) {
+		Session session = baseDao.getNewSession();
+		SQLQuery query = session.createSQLQuery("select * from issues where committer=?").addEntity(Issue.class);
+		query.setParameter(0, commiter);
+		List<Issue> list = query.list();
+		session.close();
+		return list;
+	}
+
 }

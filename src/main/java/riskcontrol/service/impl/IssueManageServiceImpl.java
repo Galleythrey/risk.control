@@ -16,6 +16,7 @@ public class IssueManageServiceImpl implements IssueManageService{
 	private IssueDao issueDao;
 
 	public void save(Issue issue) {
+		issue.setId(issueDao.newID()+1);
 		issueDao.save(issue);
 	}
 
@@ -29,6 +30,11 @@ public class IssueManageServiceImpl implements IssueManageService{
 
 	public List<Issue> findTrack(String traker) {
 		return issueDao.findTrack(traker);
+	}
+
+	@Override
+	public List<Issue> findCommit(String commiter) {
+		return issueDao.findCommit(commiter);
 	}
 
 }

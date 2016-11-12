@@ -6,7 +6,7 @@
 <struts>
 
 
-	<package name="struts2" namespace="/User" extends="struts-default">
+	<package name="struts2" extends="struts-default">
 		<action name="register" class="RegisterAction">
 			<result name="success">/user/home.jsp</result>
 			<result name="input">/user/register.jsp</result>
@@ -18,7 +18,20 @@
 		<action name="logout" class="RegisterAction" method="logout">
 			<result name="success">/user/login.jsp</result>
 		</action>
+		<action name="all" class="IssueAction">
+			<result name="success">/issue/issue_list.jsp</result>
+		</action>
+		<action name="create" class="IssueAction" method="createIssue">
+			<result name="success" type="redirect">my.action</result>
+			<result name="input">/issue/addIssue.jsp</result>
+		</action>
+		<action name="my" class="IssueAction" method="trackList">
+			<result name="success">/issue/my_list.jsp</result>
+		</action>
+		<action name="detail" class="IssueAction" method="IssueDetail">
+			<result name="success">/issue/detail.jsp</result>
+		</action>
 	</package>
-
+	
 </struts>
 

@@ -9,4 +9,5 @@ public interface IssueManageService {
 	public Issue find(int id);
 	public List<Issue> findAll();
 	public List<Issue> findTrack(String traker);
+	public List<Issue> findCommit(String commiter);
 }
