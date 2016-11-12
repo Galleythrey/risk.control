@@ -53,7 +53,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li><s:a href="my.action"><span class="glyphicon glyphicon-dashboard"></span> 我的工作台</s:a></li>
-            <li class="active"><a href="<%=request.getContextPath()+"/user/home.jsp"%>" ><span class="glyphicon glyphicon-stats"></span> 风险概述</a></li>
+            <li class="active"><s:a href="summary.action"><span class="glyphicon glyphicon-stats"></span> 风险概述</s:a></li>
             <li><s:a href="all.action"><span class="glyphicon glyphicon-th-list"></span> 风险列表</s:a></li>
             <li><a href="<%=request.getContextPath()+"/issue/addIssue.jsp"%>" ><span class="glyphicon glyphicon-pencil"></span> 新建风险</a></li>
           </ul>
@@ -71,7 +71,7 @@
                 <div class="panel panel-default">
                   <div class="panel-body panel-pos-high">
                     <div class="panel-data">
-                      <span>123</span> 打开 / 234
+                      <span><s:property value="#request.summary.p_h"/></span> 打开 / <s:property value="#request.summary.p_h"/>
                     </div>
                     <div>
                       <div class="panel-description">
@@ -86,7 +86,7 @@
                 <div class="panel panel-default">
                   <div class="panel-body panel-pos-middle">
                     <div class="panel-data">
-                      <span>123</span> 打开 / 234
+                      <span><s:property value="#request.summary.p_m"/></span> 打开 / <s:property value="#request.summary.p_m"/>
                     </div>
                     <div>
                       <div class="panel-description">
@@ -101,7 +101,7 @@
                 <div class="panel panel-default">
                   <div class="panel-body panel-pos-low">
                     <div class="panel-data">
-                      <span>123</span> 打开 / 234
+                      <span><s:property value="#request.summary.p_l"/></span> 打开 / <s:property value="#request.summary.p_l"/>
                     </div>
                     <div>
                       <div class="panel-description">
@@ -121,7 +121,7 @@
                 <div class="panel panel-default">
                   <div class="panel-body panel-aff-high">
                     <div class="panel-data">
-                      <span>123</span> 打开 / 234
+                      <span><s:property value="#request.summary.s_h"/></span> 打开 / <s:property value="#request.summary.s_h"/>
                     </div>
                     <div>
                       <div class="panel-description">
@@ -136,7 +136,7 @@
                 <div class="panel panel-default">
                   <div class="panel-body panel-aff-middle">
                     <div class="panel-data">
-                      <span>123</span> 打开 / 234
+                      <span><s:property value="#request.summary.s_m"/></span> 打开 / <s:property value="#request.summary.s_m"/>
                     </div>
                     <div>
                       <div class="panel-description">
@@ -151,7 +151,7 @@
                 <div class="panel panel-default">
                   <div class="panel-body panel-aff-low">
                     <div class="panel-data">
-                      <span>123</span> 打开 / 234
+                      <span><s:property value="#request.summary.s_l"/></span> 打开 / <s:property value="#request.summary.s_l"/>
                     </div>
                     <div>
                       <div class="panel-description">
@@ -166,12 +166,6 @@
             </section>
 
           </div>
-
-          
-
-          
-
-
 
         </div>
       </div>

@@ -48,7 +48,7 @@ public class RegisterAction extends BaseAction
 			return INPUT;
 		}
 		else{*/
-			session.put("student", user);
+			session.put("user",request.getParameter("username"));
 			return SUCCESS;
 		//}
 		

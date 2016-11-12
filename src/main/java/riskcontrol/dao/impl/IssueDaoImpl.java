@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.type.StandardBasicTypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import riskcontrol.dao.BaseDao;
 import riskcontrol.dao.IssueDao;
 import riskcontrol.model.Issue;
+import vo.SummaryVO;
 
 @Repository
 public class IssueDaoImpl implements IssueDao{
@@ -52,6 +54,27 @@ public class IssueDaoImpl implements IssueDao{
 		List<Issue> list = query.list();
 		session.close();
 		return list;
+	}
+
+	@Override
+	public SummaryVO summary() {
+		SummaryVO vo = new SummaryVO();
+		Session session = baseDao.getNewSession();
+		SQLQuery query1 = session.createSQLQuery("SELECT sum(if(`possibility`='低',1,0))as pl,sum(if(`possibility`='中',1,0))as pm,sum(if(`possibility`='高',1,0))as ph FROM `issues`")
+				.addScalar("pl", StandardBasicTypes.INTEGER).addScalar("pm", StandardBasicTypes.INTEGER).addScalar("ph", StandardBasicTypes.INTEGER);
+		Object[] pv = (Object[]) query1.uniqueResult();
+		vo.p_l = (int)pv[0];
+		vo.p_m = (int)pv[1];
+		vo.p_h = (int)pv[2];
+		
+		SQLQuery query2 = session.createSQLQuery("SELECT sum(if(`seriousness`='低',1,0))as sl,sum(if(`seriousness`='中',1,0))as sm,sum(if(`seriousness`='高',1,0))as sh FROM `issues`")
+				.addScalar("sl", StandardBasicTypes.INTEGER).addScalar("sm", StandardBasicTypes.INTEGER).addScalar("sh", StandardBasicTypes.INTEGER);
+		Object[] sv = (Object[]) query2.uniqueResult();
+		vo.s_l = (int)sv[0];
+		vo.s_m = (int)sv[1];
+		vo.s_h = (int)sv[2];
+		
+		return vo;
 	}
 
 }

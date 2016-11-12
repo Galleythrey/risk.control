@@ -8,11 +8,11 @@
 
 	<package name="struts2" extends="struts-default">
 		<action name="register" class="RegisterAction">
-			<result name="success">/user/home.jsp</result>
+			<result name="success" type="redirect">summary.action</result>
 			<result name="input">/user/register.jsp</result>
 		</action>
 		<action name="login" class="RegisterAction" method="login">
-			<result name="success">/user/home.jsp</result>
+			<result name="success" type="redirect">summary.action</result>
 			<result name="input">/user/login.jsp</result>
 		</action>
 		<action name="logout" class="RegisterAction" method="logout">
@@ -30,6 +30,9 @@
 		</action>
 		<action name="detail" class="IssueAction" method="IssueDetail">
 			<result name="success">/issue/detail.jsp</result>
+		</action>
+		<action name="summary" class="IssueAction" method="summary">
+			<result name="success">/user/home.jsp</result>
 		</action>
 	</package>
 	

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import riskcontrol.dao.IssueDao;
 import riskcontrol.model.Issue;
 import riskcontrol.service.IssueManageService;
+import vo.SummaryVO;
 
 @Service
 public class IssueManageServiceImpl implements IssueManageService{
@@ -35,6 +36,11 @@ public class IssueManageServiceImpl implements IssueManageService{
 	@Override
 	public List<Issue> findCommit(String commiter) {
 		return issueDao.findCommit(commiter);
+	}
+
+	@Override
+	public SummaryVO summary() {
+		return issueDao.summary();
 	}
 
 }

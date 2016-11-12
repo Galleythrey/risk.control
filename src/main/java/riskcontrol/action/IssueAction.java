@@ -54,6 +54,11 @@ public class IssueAction  extends BaseAction{
 		return SUCCESS;
 	}
 	
+	public String summary(){
+		request.setAttribute("summary", issueManageService.summary());
+		return SUCCESS;
+	}
+	
 	public String getProject() {
 		return project;
 	}
