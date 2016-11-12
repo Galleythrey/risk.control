@@ -1,0 +1,13 @@
+package riskcontrol.dao;
+
+import java.util.List;
+
+import riskcontrol.model.Issue;
+
+public interface IssueDao {
+	public void save(Issue issue);
+	public Issue find(int id);
+	public int newID();
+	public List<Issue> findAll();
+	public List<Issue> findTrack(String traker);
+}

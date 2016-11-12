@@ -26,35 +26,11 @@ public class UserManageServiceImpl implements UserManageService {
 	@Autowired
 	private UserDao userDao;
 
-	public User validateUser(String studentID, String password) {
-		User student = userDao.find("StudentID", studentID);
-		if (student == null) {
-			return null;
-		} else if (!student.getPassword().equals(password)) {
-			return null;
-		}
-
-		return student;
-	}
-
-	public void sentErrorMessage(String message, HttpServletRequest req) throws ServletException, IOException {
-		req.setAttribute("message", message);
-		// RequestDispatcher
-		// dispater=req.getRequestDispatcher(resp.encodeURL("/error/error.jsp"));
-		// dispater.forward(req,resp);
-	}
-
-	public void sentMessage(String message, HttpServletRequest req) throws ServletException, IOException {
-		req.setAttribute("message", message);
-		// RequestDispatcher
-		// dispater=req.getRequestDispatcher(resp.encodeURL("/message/message.jsp"));
-		// dispater.forward(req,resp);
-	}
-
-	public void forwardPage(String page, HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		RequestDispatcher dispater = req.getRequestDispatcher(resp.encodeURL(page));
-		dispater.forward(req, resp);
+	public boolean validateUser(String username, String password) {
+		if (userDao.find(username) == null)
+			return false;
+		String pass = userDao.find(username).getPassword();
+		return pass.equals(password);
 	}
 
 	public String registerStudent(User user) {
@@ -72,12 +48,6 @@ public class UserManageServiceImpl implements UserManageService {
 		userDao.save(user);
 
 		return message;
-	}
-
-	public String test() {
-		System.out.println(" test");
-		return "test";
-
 	}
 
 }

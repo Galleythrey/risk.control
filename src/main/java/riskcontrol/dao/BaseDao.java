@@ -14,7 +14,7 @@ public interface BaseDao {
 
 	public void clear();
 
-	public Object load(Class c, String id);
+	public Object load(Class c, int id);
 
 	public List getAllList(Class c);
 
@@ -29,4 +29,6 @@ public interface BaseDao {
 	public void delete(Class c, String id);
 
 	public void delete(Class c, String[] ids);
+	
+	public int getMax(Class c, String col);
 }

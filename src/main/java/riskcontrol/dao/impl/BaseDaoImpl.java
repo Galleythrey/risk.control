@@ -11,16 +11,16 @@ import riskcontrol.dao.BaseDao;
 
 @Repository
 public class BaseDaoImpl implements BaseDao {
-	/** * Autowired ×Ô¶¯×°Åä Ïàµ±ÓÚget() set() */
+	/** * Autowired ï¿½Ô¶ï¿½×°ï¿½ï¿½ ï¿½àµ±ï¿½ï¿½get() set() */
 	@Autowired
 	protected SessionFactory sessionFactory;
 
-	/** * gerCurrentSession »á×Ô¶¯¹Ø±Õsession£¬Ê¹ÓÃµÄÊÇµ±Ç°µÄsessionÊÂÎñ * * @return */
+	/** * gerCurrentSession ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½Ø±ï¿½sessionï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½Çµï¿½Ç°ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½ * * @return */
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
 
-	/** * openSession ÐèÒªÊÖ¶¯¹Ø±Õsession ÒâË¼ÊÇ´ò¿ªÒ»¸öÐÂµÄsession * * @return */
+	/** * openSession ï¿½ï¿½Òªï¿½Ö¶ï¿½ï¿½Ø±ï¿½session ï¿½ï¿½Ë¼ï¿½Ç´ï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½session * * @return */
 	public Session getNewSession() {
 		return sessionFactory.openSession();
 	}
@@ -33,14 +33,14 @@ public class BaseDaoImpl implements BaseDao {
 		getSession().clear();
 	}
 
-	/** * ¸ù¾Ý id ²éÑ¯ÐÅÏ¢ * * @param id * @return */
+	/** * ï¿½ï¿½ï¿½ï¿½ id ï¿½ï¿½Ñ¯ï¿½ï¿½Ï¢ * * @param id * @return */
 	@SuppressWarnings("rawtypes")
-	public Object load(Class c, String id) {
+	public Object load(Class c, int id) {
 		Session session = getSession();
 		return session.get(c, id);
 	}
 
-	/** * »ñÈ¡ËùÓÐÐÅÏ¢ * * @param c * * @return */
+	/** * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ * * @param c * * @return */
 
 	public List getAllList(Class c) {
 		String hql = "from " + c.getName();
@@ -49,7 +49,7 @@ public class BaseDaoImpl implements BaseDao {
 
 	}
 
-	/** * »ñÈ¡×ÜÊýÁ¿ * * @param c * @return */
+	/** * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ * * @param c * @return */
 
 	public Long getTotalCount(Class c) {
 		Session session = getNewSession();
@@ -59,7 +59,7 @@ public class BaseDaoImpl implements BaseDao {
 		return count != null ? count.longValue() : 0;
 	}
 
-	/** * ±£´æ * * @param bean * */
+	/** * ï¿½ï¿½ï¿½ï¿½ * * @param bean * */
 	public void save(Object bean) {
 		try {
 			Session session = getNewSession();
@@ -72,7 +72,7 @@ public class BaseDaoImpl implements BaseDao {
 		}
 	}
 
-	/** * ¸üÐÂ * * @param bean * */
+	/** * ï¿½ï¿½ï¿½ï¿½ * * @param bean * */
 	public void update(Object bean) {
 		Session session = getNewSession();
 		session.update(bean);
@@ -81,7 +81,7 @@ public class BaseDaoImpl implements BaseDao {
 		session.close();
 	}
 
-	/** * É¾³ý * * @param bean * */
+	/** * É¾ï¿½ï¿½ * * @param bean * */
 	public void delete(Object bean) {
 
 		Session session = getNewSession();
@@ -91,7 +91,7 @@ public class BaseDaoImpl implements BaseDao {
 		session.close();
 	}
 
-	/** * ¸ù¾ÝIDÉ¾³ý * * @param c Àà * * @param id ID * */
+	/** * ï¿½ï¿½ï¿½ï¿½IDÉ¾ï¿½ï¿½ * * @param c ï¿½ï¿½ * * @param id ID * */
 	@SuppressWarnings({ "rawtypes" })
 	public void delete(Class c, String id) {
 		Session session = getNewSession();
@@ -101,7 +101,7 @@ public class BaseDaoImpl implements BaseDao {
 		clear();
 	}
 
-	/** * ÅúÁ¿É¾³ý * * @param c Àà * * @param ids ID ¼¯ºÏ * */
+	/** * ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ * * @param c ï¿½ï¿½ * * @param ids ID ï¿½ï¿½ï¿½ï¿½ * */
 	@SuppressWarnings({ "rawtypes" })
 	public void delete(Class c, String[] ids) {
 		for (String id : ids) {
@@ -110,5 +110,13 @@ public class BaseDaoImpl implements BaseDao {
 				getSession().delete(obj);
 			}
 		}
+	}
+
+	public int getMax(Class c, String col) {
+		Session session = getNewSession();
+		String hql = "select max(" + col + ") from " + c.getName();
+		int max = (Integer) session.createQuery(hql).uniqueResult();
+		session.close();
+		return max;
 	}
 }

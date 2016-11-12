@@ -18,7 +18,7 @@ public class RegisterAction extends BaseAction
 	 */
 	private static final long serialVersionUID = 1L;
 	@Autowired
-	private UserManageService UserService;  
+	private UserManageService userService;  
 
 	private User user; 
 	
@@ -26,7 +26,7 @@ public class RegisterAction extends BaseAction
 	public String execute() 
 					throws ServletException,IOException
 	{
-		if (UserService==null )System.out.println("Student service null");
+		if (userService==null )System.out.println("Student service null");
 	//	String test=StudentService.test();
 		
 		String message="";
@@ -42,7 +42,7 @@ public class RegisterAction extends BaseAction
 		}
 		System.out.println(user.getUserName()+" Student execute");		
 		
-		UserService.registerStudent(user);
+		userService.registerStudent(user);
 	/*	if((message=StudentService.registerStudent(Student))!= null){
 			StudentService.sentErrorMessage(message, request);
 			return INPUT;
@@ -54,23 +54,21 @@ public class RegisterAction extends BaseAction
 		
     }
 
-/*	public void setStudentService(StudentManageService StudentService) {
-		this.StudentService = StudentService;
-		if (StudentService==null )System.out.println("Student service null");
+	public String login() {
+		if (userService == null)
+			System.out.println("user service null");
+		if (userService.validateUser(request.getParameter("username"), request.getParameter("password"))) {
+			session.put("user", request.getParameter("username"));
+			return SUCCESS;
+		} else {
+			return INPUT;
 		}
-		public StudentManageService getStudentService() {
-		return StudentService;
-		}*/
 
-	
-	public void setStudent(User Student) {
-		this.user = Student;
-		System.out.println(Student.getUserName()+"Student");
 	}
 
-	public User getStudent() {
-		if (user==null) System.out.println("Student null\n");
-		return user;
+	public String logout() {
+		session.clear();
+		return SUCCESS;
 	}
 
 }
