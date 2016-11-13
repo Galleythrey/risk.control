@@ -65,7 +65,7 @@
                     <h2 class="sub-header">风险详情</h2>
                     <h4 style="padding-bottom: 10px;">由
                         <span style="color:mediumblue"><s:property value="#request.Issue.committer"/></span> 
-                        为<span style="color:mediumblue"><s:property value="#request.Issue.project"/></span> 项目添加
+                        为   <span style="color:mediumblue"><s:property value="#request.Issue.project"/></span> 项目添加
                     </h4>
                     <table class="table">
                         <tbody>
