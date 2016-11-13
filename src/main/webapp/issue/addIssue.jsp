@@ -80,9 +80,9 @@
                             <label class="col-sm-2 control-label">可能性</label>
                             <div class="col-sm-4">
                                 <select name="possibility" class="form-control">
-                                    <option>高</option>
-                                    <option>中</option>
-                                    <option>低</option>
+                                    <option value="高">高</option>
+                                    <option value="中">中</option>
+                                    <option value="低">低</option>
                                 </select>
                             </div>
                         </div>
@@ -90,9 +90,9 @@
                             <label class="col-sm-2 control-label">影响程度</label>
                             <div class="col-sm-4">
                                 <select name="seriousness" class="form-control">
-                                    <option>高</option>
-                                    <option>中</option>
-                                    <option>低</option>
+                                    <option value="高">高</option>
+                                    <option value="中">中</option>
+                                    <option value="低">低</option>
                                 </select>
                             </div>
                         </div>
